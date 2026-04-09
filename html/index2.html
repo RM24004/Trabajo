@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Películas - Página 2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #222;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+       nav {
+        background-color: #333;
+        /* ELIMINADO: overflow: hidden; */
+    }
+
+    nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        /* USAMOS FLEXBOX EN LUGAR DE FLOAT PARA EVITAR ERRORES */
+        display: flex;
+    }
+
+    nav ul li {
+        /* ELIMINADO: float: left; (ya no es necesario con flex) */
+        position: relative;
+    }
+
+    nav ul li a {
+        display: block;
+        color: white;
+        padding: 14px 20px;
+        text-decoration: none;
+    }
+
+    nav ul li a:hover {
+        background-color: #575757;
+    }
+
+    nav ul li ul {
+        display: none;
+        position: absolute;
+        background-color: #444;
+        min-width: 160px;
+        z-index: 100; /* Aumentamos el z-index para asegurar que esté arriba */
+        top: 100%;
+        left: 0;
+    }
+
+    /* Esto hace que el menú aparezca al pasar el mouse */
+    nav ul li:hover > ul {
+        display: block;
+    }
+
+    nav ul li ul li {
+        width: 100%; /* Asegura que ocupen todo el ancho del submenú */
+    }
+        .banner {
+            width: 100%;
+            height: 250px;
+            background-color: #1a1a2e;
+            background-image: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+        .contenido {
+            padding: 20px;
+        }
+        h2 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🎬 Cine y Películas</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Películas ▾</a>
+                <ul>
+                    <li><a href="accion.html">Acción</a></li>
+                    <li><a href="#">Drama</a></li>
+                    <li><a href="#">Ciencia Ficción</a></li>
+                    <li><a href="#">Comedia</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Noticias</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <div class="banner">
+        🎥 Bienvenido al Mundo del Cine
+    </div>
+
+    <div class="contenido">
+        <h2>Bienvenido a la página de cine</h2>
+        <p>Explora información sobre películas recientes, géneros y novedades del mundo del cine. 
+        Este es un ejemplo de menú desplegable y un banner visual para给它 estilo a tu sitio.</p>
+    </div>
+</body>
+</html>
