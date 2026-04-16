@@ -1,0 +1,427 @@
+/* RESET Elimina estilos que el navegador ofrece preddeterminadamente */
+/* Base mas profesional para iniciar paginas en css */
+
+/*Fase 1*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* damos un estilo general a la pagina definiento algunos campos */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+    background-color: #f5f5f5;
+    color: #333;
+}
+/*con este quitamos el color a los enlaces*/
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/*imagenes responsivas*/
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/*ponemos un contenedor general para todo*/
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/*Fase 2*/
+/* HEADER le damos personalidad al header*/
+.header {
+    background-color: white;
+    padding: 15px 30px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* CONTENEDOR HEADER  lo agregamos a un contenedor y le damos propiedades para que se vea adecuadamente*/
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* LOGO modificamos las propiedades del logo  */
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+/* NAV creamos la navbar para convertir la lista en un pequeño menu*/
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 20px; /* muy usado hoy en dia separa elemnetos sin usar margin*/
+}
+
+/* LINKS NAV a la lista la convertrimos en vinculos */
+.nav-list a {
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+/* HOVER NAV agregamos un pequeño cambio de color cuando pase sobre la navbar */
+.nav-list a:hover {
+    color: #3498db;
+}
+
+/* BOTON MENU modificamos los botones del menu*/
+.menu-btn {
+    padding: 8px 12px;
+    border: none;
+    background: #3498db;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/*Fase 3*/
+/* HERO modificamos la aprte superior */
+.hero {
+    background: linear-gradient(135deg, #3498db, #6dd5fa);/*muy usado para agregar gradiante*/
+    color: white;
+    padding: 100px 20px;
+    text-align: center;
+}
+
+/* CONTENIDO HERO modificamos el contenido del hero*/
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto; /* centrado automatico */
+}
+
+
+/* TITULO HERO modificamos el titulo del hero */
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+/* TEXTO HERO modificamos el texto dentro del hero*/
+.hero p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+/* BOTONES HERO reubicamos apropiadamente los botones */
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+/*Fase 3.1*/
+/* Con este bloque modificaremos todos los botones de una sola vez */
+/* BOTONES reutilizables */
+.btn {
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+/* BOTON PRIMARIO */
+.btn.primary {
+    background: white;
+    color: #3498db;
+}
+
+/* BOTON SECUNDARIO */
+.btn.secondary {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+}
+
+/* HOVER BOTONES */
+.btn:hover {
+    transform: translateY(-2px); /*hace que el boton flote */
+}
+
+/*Fase 4*/
+/* LAYOUT PRINCIPAL Agregamos el layout */
+.main-layout {
+    display: grid;
+    grid-template-columns: 250px 1fr; /*Con esto haremos columnas*/
+    gap: 20px;                        /*Con este le decimos que use el espacio restante*/
+    padding: 40px;
+}
+/*Modificamos la barra de el lado izquierdo*/
+.sidebar {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    height: fit-content; /*Evita que el sidebar se estire*/
+}
+
+.sidebar h3 {
+    margin-bottom: 15px;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar li {
+    margin-bottom: 10px;
+}
+
+.sidebar a {
+    color: #333;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    color: #3498db;
+}
+
+/*Separaremos todo el contenido principal*/
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+/*Modificamos la pequeña tarjeta y lf damos forma */
+.card.small {
+    margin-top: 20px;
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 6px;
+}
+
+/*Fase 5*/
+/* SECCION CARDS */ /* Con estos crearemos 3 columnas iguales */
+.cards h2 {
+    margin-bottom: 20px;
+}
+
+/* GRID DE CARDS */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales para que se vea bien*/
+    gap: 20px;
+}
+
+/*Agregaremos estilo a las cards*/
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05); /*para agregar sombras*/
+    transition: 0.3s;
+}
+
+.card h3 {
+    margin-bottom: 10px;
+}
+
+.card p {
+    margin-bottom: 15px;
+    color: #666;
+}
+ /*Agregamos el estilo de enfoque a las cards*/
+.card:hover {
+    transform: translateY(-5px); /* Elevacion de modo profesional */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* Ahora el boton se configura al contenido */
+.card .btn {
+    width: fit-content;
+}
+
+/*Fase 6*/
+/* GALERIA Grid de la galeria  */
+.gallery h2 {
+    margin-bottom: 20px;
+}
+
+.gallery-grid {
+    display: grid;
+    /*grid-template-columns: repeat(3, 1fr);/*Estatico*/
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));/*Responsive*/
+    gap: 15px;                    /*El grid decide cuantas columnas caben en la pantalla*/
+}
+/*Personalizamos la galeria*/
+.gallery-item {
+    background: #3498db;
+    color: white;
+    height: 120px;
+    display: flex; /*Con esto centramos el numero*/
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+/*Animamos el color para realzarlo*/
+.gallery-item:hover {
+    background: #2c3e50;
+    transform: scale(1.05);
+}
+
+/*Fase 7*/
+
+/* SECCION TABLA */
+.table-section h2 {
+    margin-bottom: 20px;
+}
+
+/* Perzonalizamos la TABLA */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+}
+/*Modificamos la apariencia del encabezado*/
+.table thead {
+    background: #3498db;
+    color: white;
+}
+
+/*Modificamos los encabezados*/
+.table th {
+    text-align: left;
+    padding: 15px;
+    font-weight: 600;
+}
+
+/*Perzonalizamos las filas de la tabla*/
+.table td {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+/*Perzonalizamos los colores de las lineas de las filas*/
+.table td {
+    padding: 15px; /*  para agregar espacio de forma profesional*/
+    border-bottom: 1px solid #eee;
+}
+
+/*Modificamos el color del hover para que resalte*/
+.table tbody tr:hover {
+    background: #f1f7ff;
+}
+
+/*La ultima fila sin borde*/
+.table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* SECCION FORM  agregamos su respectivo margen*/
+.form-section h2 {
+    margin-bottom: 20px;
+}
+
+/* FORMULARIO fondo y padding*/
+.form {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+}
+
+/*Hacemos que el grupo se autofit y lo ordenamos, y lo agrupamos para trabajarlo todo junto*/
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+/*Modificamos el texto del formulario parejo*/
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+/*Le damos apareciencia a los items del formulario*/
+.form input,
+.form select,
+.form textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+/*Le damos el toque de cambio de color al estar seleccionado*/
+.form input:focus,
+.form select:focus,
+.form textarea:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 2px rgba(52,152,219,0.2);
+}
+
+/**/
+.form-group.inline {
+    flex-direction: row;
+    align-items: center;
+}
+/**/
+.form .btn {
+    margin-top: 10px;
+}
+
+/*Fase 9*/
+/*Colores al footer y el padding*/
+.footer {
+    background: #2c3e50;
+    color: white;
+    padding: 40px 20px 20px 20px;
+}
+
+/*Columnas para dividir el trabajo*/
+.footer-columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+/*Titulos del pie de pagina*/
+.footer h4 {
+    margin-bottom: 15px;
+}
+
+/*Listas en el footer*/
+.footer ul {
+    list-style: none;
+}
+.footer li {
+    margin-bottom: 8px;
+}
+
+/*Agregamos estilo al hora de pasar sobre el link*/
+.footer a {
+    color: #ccc;
+    transition: 0.3s;
+}
+
+.footer a:hover {
+    color: white;
+}
+
+/*Modicamos el fondo para que se vea mas profesional*/
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.2);
+    padding-top: 15px;
+    text-align: center;
+    font-size: 14px;
+}
+
+/*Fase 10*/
