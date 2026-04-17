@@ -1,0 +1,44 @@
+body {
+    font-family: Arial, sans-serif;
+}
+p.primero {
+    color: rgb(0, 13, 128);
+    font-size: 18px;
+}
+
+p.segundo {
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+}
+
+p.tercero {
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+}
+
+/* Título */
+h1 {
+    color: rgb(255, 0, 0);
+    text-decoration: underline;
+}
+
+/* Enlaces */
+a {
+    color: red;
+    text-decoration: underline;
+}
+
+/* Texto en cursiva */
+em {
+    color: blue;
+}
+
+/* Texto resaltado (amarillo + negrita) */
+.resaltado {
+    background-color: yellow;
+    font-weight: bold;
+}
+
+.bold {
+    font-weight: bold;
+}
