@@ -1,0 +1,49 @@
+/*Paso 5 */
+:root { /* Variables CSS su uso es para facilitar la mantenibilidad y actualización del estilo */
+ --bg-page: #f4f7fb;
+ --bg-card: #ffffff;
+ --bg-block: #3498db;
+ --text-main: #1f2933;
+ --text-soft: #52606d;
+ --text-light: #ffffff;
+ --border-soft: #d9e2ec;
+}
+* { 
+    box-sizing: border-box;/* esta propiedad asegura que el padding y el borde se incluyan dentro del ancho y alto total de los elementos, lo que facilita el diseño y la consistencia en la apariencia de los elementos en la página */
+}
+
+body { /*Cuerpo de la página, se establecen estilos generales como el fondo, color de texto, tipografía y márgenes */
+ margin: 0;
+ font-family: Arial, sans-serif;
+ background-color: var(--bg-page);
+ color: var(--text-main);
+ line-height: 1.6;
+ padding: 20px;
+} 
+
+/* Estilos para el encabezado de la página y el contenido principal, se centra el contenido y se establece un ancho máximo para mejorar la legibilidad */
+.page-header,
+.guide-content { max-width: 980px; margin: 0 auto; }
+.demo-section {
+ background-color: var(--bg-card);
+ border: 1px solid var(--border-soft);
+ border-radius: 14px;
+ padding: 24px;
+ margin-bottom: 28px;
+}
+
+/* Estilos para los bloques dentro de las secciones de demostración, se les da un fondo, color de texto, padding y bordes redondeados para mejorar la apariencia visual */
+.layout-grid > *, .card {
+ padding: 20px;
+ background-color: var(--bg-block);
+ color: var(--text-light);
+ border-radius: 10px;
+}
+
+/* Estilos para las etiquetas de los pasos, se transforman a mayúsculas, se agrega espaciado entre letras, se establece un peso de fuente negrita y un color específico para destacar la información */
+.step-label {
+ text-transform: uppercase;
+ letter-spacing: 0.08em;
+ font-weight: bold;
+ color: #0f766e;
+}

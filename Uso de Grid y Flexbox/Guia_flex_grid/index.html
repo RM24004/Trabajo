@@ -1,0 +1,124 @@
+    <!--Paso 1 pagina web estructura-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Guía Flexbox y Grid</title>
+ <!-- Estilos generales -->
+ <link rel="stylesheet" href="css/base.css">
+ <!-- Estilos específicos de Flexbox -->
+ <link rel="stylesheet" href="css/flexbox.css">
+ <!-- Estilos específicos de Grid -->
+ <link rel="stylesheet" href="css/grid.css">
+</head>
+<body>
+ <header class="page-header">
+ <h1>Guía: Flexbox y Grid</h1>
+ <p class="lead">Aprenderemos a construir layouts con ejemplos pequeños y
+claros.</p>
+ </header>
+ <main class="guide-content">
+
+    <!--Paso 2 navegacion con Flexbox-->
+ <section class="demo-section" id="paso-1">
+ <div class="section-copy">
+ <p class="step-label">Paso 1</p>
+ <h2>Flexbox: Barra de navegación</h2>
+ <p>Este ejemplo muestra cómo repartir espacio entre un logo y un grupo de
+enlaces.</p>
+ </div>
+ <nav class="menu-flex" aria-label="Navegación de ejemplo">
+ <span class="logo">Mi Sitio</span>
+ <div class="links">
+ <a href="#paso-1">Inicio</a>
+ <a href="#paso-2">Tarjetas</a>
+ <a href="#paso-3">Layout Grid</a>
+ </div>
+ </nav>
+</section>
+
+<!--paso 3 tarjetas con flexbox-->
+<section class="demo-section" id="paso-2">
+ <div class="section-copy">
+ <p class="step-label">Paso 2</p>
+ <h2>Flexbox: Tarjetas con control individual</h2>
+ <p>Una tarjeta crece más que las demás para comparar comportamientos.</p>
+ </div>
+<div class="cards-flex" role="list" aria-label="Tarjetas de ejemplo">
+ <article class="card destacada" role="listitem">
+El nav como flex
+container
+El elemento
+nav.menu-flex recibirá
+display: flex. Esto
+convierte a sus hijos
+directos (.logo y .links) en
+flex items
+automáticamente.
+Agrupación de enlaces
+Los enlaces están dentro de
+un div.links secundario. Esto
+permite tratarlos como un
+solo bloque desde la
+perspectiva del nav,
+facilitando el control del
+espacio con justify-content:
+space-between.
+Distribución
+horizontal
+Flexbox distribuirá el
+espacio entre el logo y
+el grupo de enlaces
+de forma horizontal. El
+valor space-between
+llevará cada elemento
+a los extremos del
+contenedor.
+ <h3>Tarjeta destacada</h3>
+ <p>Crece más para mostrar cómo un hijo puede ocupar mayor espacio.</p>
+ </article>
+ <article class="card" role="listitem">
+ <h3>Tarjeta 2</h3>
+ <p>Mantiene un tamaño base dentro del contenedor flexible.</p>
+ </article>
+ <article class="card" role="listitem">
+ <h3>Tarjeta 3</h3>
+ <p>Comparte el mismo comportamiento base que la tarjeta anterior.</p>
+ </article>
+ </div>
+</section>
+
+<!--paso 4 layout con grid-->
+<section class="demo-section" id="paso-3">
+ <div class="section-copy">
+ <p class="step-label">Paso 3</p>
+ <h2>Grid: Layout de página</h2>
+ <p>Este ejemplo organiza una página usando áreas nombradas.</p>
+ </div>
+ <div class="layout-grid" aria-label="Layout principal de ejemplo">
+ <header>
+ <h3>Header</h3>
+ <p>Encabezado principal del sitio.</p>
+ </header>
+ <aside>
+ <h3>Sidebar</h3>
+ <p>Área secundaria para menú o recursos.</p>
+ </aside>
+ <div class="main-panel">
+ <h3>Contenido principal</h3>
+ <p>Zona principal donde vive la información más importante.</p>
+ </div>
+ <footer>
+ <h3>Footer</h3>
+ <p>Pie con enlaces y datos de cierre.</p>
+ </footer>
+ </div>
+</section>
+
+
+
+
+ </main>
+</body>
+</html>

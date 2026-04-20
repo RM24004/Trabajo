@@ -1,0 +1,49 @@
+/*Paso 6*/
+.menu-flex {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ flex-wrap: wrap;
+ gap: 12px 20px;
+ background-color: #2c3e50;
+ padding: 15px 18px;
+ border-radius: 10px;
+}
+.links /* EStilo para los enlaces */
+{
+ display: flex;
+ flex-wrap: wrap;
+ gap: 20px;
+}
+.menu-flex a /* Estilos para los enlaces dentro del menú de navegación, se les da un color blanco, se elimina el subrayado, se establece un peso de fuente negrita para mejorar la legibilidad y se les da un aspecto más atractivo visualmente */
+{
+ color: white;
+ text-decoration: none;
+ font-weight: bold;
+}
+.cards-flex /* Estilos para la sección de demostración de Flexbox, se establece un contenedor flexible con espacio entre los elementos, alineación centrada, envoltura de los elementos y un espacio entre ellos para mejorar la presentación visual */
+{
+ display: flex;
+ flex-wrap: wrap;
+ gap: 20px;
+}
+.card /* Estilos para las tarjetas dentro de la sección de demostración, se les da una flexibilidad para que se ajusten al espacio disponible, con un ancho mínimo de 180px, y se destaca una tarjeta específica con un fondo diferente y mayor flexibilidad para ocupar más espacio */
+{ 
+    flex: 1 1 180px; 
+}
+.card.destacada /* Esta clase adicional se aplica a una tarjeta específica para destacarla, se le da una flexibilidad mayor para que ocupe más espacio en la fila y se le asigna un fondo diferente para resaltar su importancia visual */
+{
+ flex: 2 1 260px;
+ background-color: #1abc9c;
+}
+
+/* paso 8 */
+/*movil*/
+/* Estilos para la sección de demostración de Flexbox en pantallas pequeñas, se cambia la dirección del contenedor flexible a columna y se alinea los elementos al inicio para mejorar la presentación en dispositivos móviles */
+@media (max-width: 700px) {
+ .menu-flex {
+ flex-direction: column;
+ align-items: flex-start;
+ }
+}
+

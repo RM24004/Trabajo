@@ -1,0 +1,28 @@
+/*paso 7 */
+.layout-grid {
+ display: grid;
+ grid-template-areas:
+ "header header"
+ "sidebar main"
+ "footer footer";
+ grid-template-columns: minmax(180px, 240px) minmax(0, 1fr);
+ gap: 15px;
+}
+.layout-grid header { grid-area: header; }
+.layout-grid aside { grid-area: sidebar; }
+.main-panel { grid-area: main; }
+.layout-grid footer { grid-area: footer; }
+/*grid movil*/
+/* Estilos para la sección de demostración de Grid, se establece un contenedor de cuadrícula con áreas definidas para el encabezado, barra lateral, contenido principal y pie de página, y se asignan estilos específicos a cada área para mejorar la presentación visual */
+
+/*paso 8 */
+@media (max-width: 760px) {
+ .layout-grid {
+ grid-template-areas:
+ "header"
+ "sidebar"
+ "main"
+ "footer";
+ grid-template-columns: 1fr;
+ }
+}

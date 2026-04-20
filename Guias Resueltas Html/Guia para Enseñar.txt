@@ -40,3 +40,5 @@ Estructura <form>: El contenedor principal.
 Inputs esenciales: text, email, password y el botón submit.
 
 Labels: Esencial para la experiencia de usuario; que sepan que al hacer clic en el texto se active el cuadro de entrada.
+
+6.El archivo examen_Ht_Css es para practicar todo lo de html y css se puede utilizar para practica completa y teoria para luego dejar el proyecto
