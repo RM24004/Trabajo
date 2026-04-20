@@ -1,0 +1,44 @@
+/* Fondo general de la página */
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+
+    /* Fondo degradado moderno */
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+
+    /* Centramos todo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Tarjeta del reproductor */
+.player {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    width: 400px;
+
+    /* Sombra para efecto elegante */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* Título */
+h2 {
+    margin: 0;
+}
+
+/* Texto */
+p {
+    color: gray;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+/* Video */
+video {
+    width: 100%;          /* ocupa todo el ancho */
+    border-radius: 10px;  /* bordes redondeados */
+}

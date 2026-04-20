@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario</title>
+    <link rel="stylesheet" href="stile04.css">
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Datos Personales</h2>
+
+    <form>
+
+        <!-- Nombre -->
+        <label>Nombre:</label>
+        <input type="text" placeholder="Ingrese su nombre">
+
+        <!-- Edad -->
+        <label>Edad:</label>
+        <input type="number">
+
+        <!-- Género (Radio) -->
+        <label>Género:</label>
+        <div class="grupo">
+            <label><input type="radio" name="genero"> Masculino</label>
+            <label><input type="radio" name="genero"> Femenino</label>
+            <label><input type="radio" name="genero"> Otro</label>
+        </div>
+
+        <!-- Estado civil (otro grupo de radio) -->
+        <label>Estado civil:</label>
+        <div class="grupo">
+            <label><input type="radio" name="estado"> Soltero</label>
+            <label><input type="radio" name="estado"> Casado</label>
+            <label><input type="radio" name="estado"> Otro</label>
+        </div>
+
+        <!-- Hobbies (Checkbox) -->
+        <label>Hobbies:</label>
+        <div class="grupo">
+            <label><input type="checkbox"> Deportes</label>
+            <label><input type="checkbox"> Música</label>
+            <label><input type="checkbox"> Lectura</label>
+            <label><input type="checkbox"> Videojuegos</label>
+        </div>
+
+        <!-- Aceptar términos -->
+        <div class="grupo">
+            <label>
+                <input type="checkbox"> Acepto los términos y condiciones
+            </label>
+        </div>
+
+        <!-- Botón -->
+        <button type="submit">Enviar</button>
+
+    </form>
+</div>
+
+</body>
+</html>

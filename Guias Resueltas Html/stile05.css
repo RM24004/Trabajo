@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+
+    /* fondo moderno */
+    background: linear-gradient(135deg, #667eea, #764ba2);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* contenedor tipo card */
+.player {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+    width: 300px;
+
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+/* imagen */
+.player img {
+    width: 100%;
+    border-radius: 15px;
+    margin: 15px 0;
+}
+
+/* audio */
+audio {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* texto */
+h2 {
+    margin: 0;
+}
+
+p {
+    color: gray;
+    font-size: 14px;
+}

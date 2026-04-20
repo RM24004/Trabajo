@@ -1,0 +1,42 @@
+1. El Concepto de "Esqueleto" (Estructura Semántica)
+Antes de escribir una sola etiqueta, explica que HTML son las vigas y paredes de una casa.
+
+La Anatomía de una Etiqueta: Apertura, contenido y cierre <etiqueta>Contenido</etiqueta>.
+
+La Estructura Global: El uso obligatorio de <!DOCTYPE html>, <html>, <head> (metadatos) y <body> (lo que se ve).
+
+Semántica Básica: Por qué usar <header>, <main>, <section> y <footer> en lugar de llenar todo con <div>. Esto es clave para el SEO y la accesibilidad.
+
+2. Jerarquía de Contenido y Texto
+Es vital que aprendan a organizar la información para que el usuario (y Google) la entienda.
+
+Títulos (<h1> a <h6>): Regla de oro: solo un <h1> por página.
+
+Párrafos (<p>) y Saltos: Diferencia entre un párrafo y un simple salto de línea <br>.
+
+Listas: <ul> (desordenadas) y <ol> (ordenadas) con sus correspondientes <li>. Son la base de casi todos los menús de navegación.
+
+3. Hipervínculos y Atributos
+Aquí es donde la web se vuelve "telaraña".
+
+La etiqueta <a>: Uso del atributo href.
+
+Rutas Relativas vs. Absolutas: Explicar la diferencia entre enlazar a "google.com" y enlazar a "contacto.html" que está en la misma carpeta.
+
+Atributo target="_blank": Cuándo es buena idea abrir una pestaña nueva.
+
+4. Multimedia Responsable
+Una web sin imágenes es aburrida, pero una web con imágenes rotas es profesionalmente pobre.
+
+Etiqueta <img>: Uso de src y, fundamentalmente, el atributo alt (descripción para invidentes y cuando la imagen no carga).
+
+Formatos: Breve mención de cuándo usar JPG, PNG o SVG.
+
+5. Captura de Datos (Formularios Básicos)
+Para que una web sea "buena", debe permitir interacción. No profundices en el procesamiento de datos (backend), solo en la interfaz.
+
+Estructura <form>: El contenedor principal.
+
+Inputs esenciales: text, email, password y el botón submit.
+
+Labels: Esencial para la experiencia de usuario; que sepan que al hacer clic en el texto se active el cuadro de entrada.

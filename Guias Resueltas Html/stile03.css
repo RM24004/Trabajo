@@ -1,0 +1,51 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    text-align: center;
+}
+
+h1 {
+    margin: 20px 0;
+}
+
+table {
+    margin: auto;
+    border-collapse: collapse;
+    width: 80%;
+    background-color: white;
+}
+
+th, td {
+    border: 1px solid #999;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Encabezado */
+th {
+    background-color: #8ea9c9;
+    color: black;
+}
+
+/* Primera columna (horas) */
+td:first-child {
+    background-color: #d9e1f2;
+}
+
+/* Recreo */
+.recreo td {
+    background-color: #8ea9c9;
+}
+
+/* contenedor */
+.recreo-texto {
+    display: flex;
+    justify-content: space-between; /* ← clave */
+    width: 100%;
+}
+
+/* letras */
+.recreo-texto span {
+    flex: 1;               /* todas ocupan el mismo espacio */
+    text-align: center;    /* centradas */
+}
