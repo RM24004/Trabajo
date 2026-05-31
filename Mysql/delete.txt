@@ -1,0 +1,27 @@
+DELETE FROM clientes
+WHERE id = 5;
+
+DELETE FROM pais
+WHERE id = 4;
+
+DELETE FROM usuario
+WHERE id = 5;
+
+DELETE FROM empleados
+WHERE id = 2;
+
+DELETE FROM proveedores
+WHERE id = 3;
+
+DELETE FROM factura
+WHERE id = 1;
+
+DELETE FROM genero
+WHERE id = 4;
+
+Nunca borrar todo
+DELETE FROM clientes;
+
+Delete con condiciones
+DELETE FROM empleados
+WHERE salario < 500;

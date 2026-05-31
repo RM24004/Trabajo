@@ -1,0 +1,56 @@
+INSERT INTO pais (nombre_pais, abreviatura, descripcion) VALUES
+('El Salvador', 'SV', 'País de Centroamérica'),
+('Guatemala', 'GT', 'País de Centroamérica'),
+('Honduras', 'HN', 'País de Centroamérica'),
+('México', 'MX', 'País de Norteamérica'),
+('Estados Unidos', 'US', 'País de Norteamérica');
+
+INSERT INTO roles (abreviatura, nombre, descripcion) VALUES
+('ADMIN', 'Administrador', 'Control total del sistema'),
+('EMP', 'Empleado', 'Usuario del área operativa'),
+('CLI', 'Cliente', 'Usuario comprador'),
+('SUP', 'Supervisor', 'Supervisa operaciones'),
+('INV', 'Inventario', 'Gestiona productos');
+
+INSERT INTO usuario (nombre_usuario, password_hash, rol_id) VALUES
+('admin01', 'hash123', 1),
+('empleado01', 'hash456', 2),
+('cliente01', 'hash789', 3),
+('supervisor01', 'hash321', 4),
+('inventario01', 'hash654', 5);
+
+INSERT INTO clientes (nombre, correo, pais_id) VALUES
+('Juan Pérez', 'juan@gmail.com', 1),
+('María López', 'maria@gmail.com', 2),
+('Carlos Gómez', 'carlos@gmail.com', 3),
+('Ana Torres', 'ana@gmail.com', 4),
+('Luis Martínez', 'luis@gmail.com', 5);
+
+INSERT INTO empleados (nombre, apellidos, telefono, turno, puesto, salario, pais_id) VALUES
+('José', 'Ramírez', '7001-1111', 'Mañana', 'Cajero', 450.00, 1),
+('Pedro', 'Hernández', '7002-2222', 'Tarde', 'Vendedor', 500.00, 2),
+('Lucía', 'Martínez', '7003-3333', 'Noche', 'Supervisor', 700.00, 3),
+('Karla', 'Flores', '7004-4444', 'Mañana', 'Administración', 650.00, 4),
+('Miguel', 'Santos', '7005-5555', 'Tarde', 'Inventario', 550.00, 5);
+
+INSERT INTO proveedores (nombre_proveedor, descripcion, contacto, correo, pais_id) VALUES
+('Distribuidora Central', 'Proveedor de alimentos', '6001-1111', 'dist@correo.com', 1),
+('TecnoSupply', 'Equipo tecnológico', '6002-2222', 'tecno@correo.com', 2),
+('Alimentos del Norte', 'Productos básicos', '6003-3333', 'alimentos@correo.com', 3),
+('Global Imports', 'Importaciones varias', '6004-4444', 'global@correo.com', 4),
+('Comercial XYZ', 'Distribución general', '6005-5555', 'xyz@correo.com', 5);
+
+INSERT INTO factura (descripcion, cantidad, precio, total, cliente_id, empleado_id) VALUES
+('Compra de abarrotes', 3, 10.50, 31.50, 1, 1),
+('Compra de electrónicos', 2, 250.00, 500.00, 2, 2),
+('Compra de limpieza', 5, 5.00, 25.00, 3, 3),
+('Compra de oficina', 4, 15.75, 63.00, 4, 4),
+('Compra variada', 6, 8.00, 48.00, 5, 5);
+
+INSERT INTO genero (nombre, descripcion, abreviatura) VALUES
+('Masculino', 'Hombre', 'M'),
+('Femenino', 'Mujer', 'F'),
+('No binario', 'Identidad no binaria', 'NB'),
+('Otro', 'Otra identidad', 'O'),
+('Prefiero no decirlo', 'Sin especificar', 'PND');
+

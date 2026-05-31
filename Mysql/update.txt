@@ -1,0 +1,39 @@
+UPDATE clientes
+SET nombre = 'Juan Carlos Pérez',
+    correo = 'juancarlos@gmail.com'
+WHERE id = 1;
+
+UPDATE pais
+SET descripcion = 'País de Centroamérica con crecimiento tecnológico'
+WHERE id = 1;
+
+UPDATE usuario
+SET nombre_usuario = 'admin_master',
+    password_hash = 'nuevo_hash_seguro'
+WHERE id = 1;
+
+UPDATE empleados
+SET puesto = 'Gerente',
+    salario = 900.00,
+    turno = 'Mañana'
+WHERE id = 3;
+
+UPDATE proveedores
+SET contacto = '7000-9999',
+    correo = 'nuevo_proveedor@correo.com'
+WHERE id = 2;
+
+UPDATE factura
+SET cantidad = 10,
+    precio = 12.00,
+    total = 120.00,
+    descripcion = 'Compra actualizada de productos varios'
+WHERE id = 4;
+
+UPDATE genero
+SET descripcion = 'Identidad masculina'
+WHERE id = 1;
+
+update masivo
+UPDATE empleados
+SET salario = salario + 50;
