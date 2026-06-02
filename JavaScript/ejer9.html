@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"></head>
+<body>
+<p>innerHtml controla que puede incluirse en un elemento.</p>
+<div id ="salida"></div>
+<script>
+let dato, num;
+dato = window.prompt("Introduce un número ?", "0");
+num = parseInt(dato);
+let resultado = num *2;           //el innerHTML no controla el tipo de dato que se introduce, por lo que si se introduce un texto, el resultado es un texto repetido dos veces.
+document.getElementById("salida").innerHTML = (`El doble es ${resultado} `); //El resultado se muestra en el elemento con id salida, y no en la página completa.
+</script>
+</body>
+</html>

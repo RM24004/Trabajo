@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    display: flex; justify-content: center; align-items: center;
+    min-height: 100vh; font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+  }
+  .calculadora {
+    background: #222;
+    border-radius: 20px; padding: 25px; width: 340px;
+    box-shadow: 0 20px 60px rgba(0,0,0,.5);
+  }
+  #pantalla {
+    width: 100%; height: 70px; font-size: 2rem; text-align: right;
+    padding: 0 15px; border: none; border-radius: 10px;
+    background: #333; color: #fff; margin-bottom: 20px;
+    outline: none; font-weight: 500;
+  }
+  .botones {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+  }
+  input[type="button"] {
+    height: 60px; font-size: 1.3rem; font-weight: 600; border: none;
+    border-radius: 12px; cursor: pointer; transition: .15s;
+    background: #3a3a3a; color: #fff;
+  }
+  input[type="button"]:hover { filter: brightness(1.3); }
+  input[type="button"]:active { transform: scale(.93); }
+  .operador { background: #ff9500; }
+  .igual { background: #28a745; }
+  .borrar { background: #dc3545; }
+  .funcion { background: #555; }
+</style>
+</head>
+<body>
+<form class="calculadora" onsubmit="return false">
+  <input type="text" id="pantalla" readonly>
+  <div class="botones">
+    <input type="button" class="funcion" value="C" onclick="limpiar()">
+    <input type="button" class="funcion" value="±" onclick="cambioSigno()">
+    <input type="button" class="funcion" value="%" onclick="agregar('%')">
+    <input type="button" class="operador" value="÷" onclick="agregar('/')">
+
+    <input type="button" value="7" onclick="agregar('7')">
+    <input type="button" value="8" onclick="agregar('8')">
+    <input type="button" value="9" onclick="agregar('9')">
+    <input type="button" class="operador" value="×" onclick="agregar('*')">
+
+    <input type="button" value="4" onclick="agregar('4')">
+    <input type="button" value="5" onclick="agregar('5')">
+    <input type="button" value="6" onclick="agregar('6')">
+    <input type="button" class="operador" value="−" onclick="agregar('-')">
+
+    <input type="button" value="1" onclick="agregar('1')">
+    <input type="button" value="2" onclick="agregar('2')">
+    <input type="button" value="3" onclick="agregar('3')">
+    <input type="button" class="operador" value="+" onclick="agregar('+')">
+
+    <input type="button" value="0" onclick="agregar('0')" style="grid-column: span 2">
+    <input type="button" value="." onclick="agregar('.')">
+    <input type="button" class="igual" value="=" onclick="calcular()">
+  </div>
+</form>
+
+<script>
+const pantalla = document.getElementById('pantalla');
+
+function agregar(valor) {
+  pantalla.value += valor;
+}
+
+function limpiar() {
+  pantalla.value = '';
+}
+
+function calcular() {
+  try {
+    pantalla.value = eval(pantalla.value) || '';
+  } catch {
+    pantalla.value = 'Error';
+  }
+}
+
+function cambioSigno() {
+  if (pantalla.value) {
+    pantalla.value = pantalla.value.startsWith('-')
+      ? pantalla.value.slice(1)
+      : '-' + pantalla.value;
+  }
+}
+</script>
+</body>
+</html>
