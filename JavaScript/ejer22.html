@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Validación de edad</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+      background-color: #f4f4f9;
+    }
+    table {
+      margin: auto;
+      border-collapse: collapse;
+      width: 40%;
+      background-color: #ffffff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+    th, td {
+      border: 1px solid #333;
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+    input {
+      padding: 5px;
+      text-align: center;
+      width: 80px;
+    }
+    button {
+      margin-top: 15px;
+      padding: 8px 15px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    #resultado {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 18px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h2>Validación de acceso por edad</h2>
+  <table>
+    <tr>
+      <th>Edad</th>
+    </tr>
+    <tr>
+      <td><input type="number" id="edad" min="1" max="120"></td>
+    </tr>
+  </table>
+  <button onclick="verificarEdad()">Verificar</button>
+
+  <div id="resultado"></div>
+
+  <script>
+    function verificarEdad() {
+      let edad = parseInt(document.getElementById("edad").value);
+      let resultado = document.getElementById("resultado");
+
+      if (isNaN(edad)) {
+        resultado.innerHTML = "⚠️ Por favor introduce una edad.";
+      } else if (edad < 1 || edad > 120) {
+        resultado.innerHTML = "❌ Edad no permitida (solo entre 1 y 120 años).";
+      } else if (edad > 18) {
+        resultado.innerHTML = "✅ Sí tiene permiso de acceso.";
+      } else {
+        resultado.innerHTML = "❌ No tiene permiso de acceso.";
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Agencia de Viajes</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+      background-color: #f4f4f9;
+    }
+    table {
+      margin: auto;
+      border-collapse: collapse;
+      width: 60%;
+      background-color: #ffffff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+    th, td {
+      border: 1px solid #333;
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+    select {
+      padding: 5px;
+    }
+    button {
+      margin-top: 15px;
+      padding: 8px 15px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    #resultado {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 18px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h2>Agencia de Viajes - Descuentos</h2>
+  <table>
+    <tr>
+      <th>Origen</th>
+      <th>Destino</th>
+    </tr>
+    <tr>
+      <td>
+        <select id="origen">
+          <option value="Palma">Palma</option>
+          <option value="Otro">Otro</option>
+        </select>
+      </td>
+      <td>
+        <select id="destino">
+          <option value="Barcelona">Barcelona</option>
+          <option value="Madrid">Madrid</option>
+          <option value="Valencia">Valencia</option>
+          <option value="Otro">Otro</option>
+        </select>
+      </td>
+    </tr>
+  </table>
+  <button onclick="calcularDescuento()">Calcular descuento</button>
+
+  <div id="resultado"></div>
+
+  <script>
+    function calcularDescuento() {
+      let origen = document.getElementById("origen").value;
+      let destino = document.getElementById("destino").value;
+      let descuento = 0;
+
+      if (origen === "Palma") {
+        if (destino === "Barcelona") {
+          descuento = 5;
+        } else if (destino === "Madrid") {
+          descuento = 10;
+        } else if (destino === "Valencia") {
+          descuento = 15;
+        }
+      }
+
+      let resultado = document.getElementById("resultado");
+      if (descuento > 0) {
+        resultado.innerHTML = "✅ El descuento es del " + descuento + "%";
+      } else {
+        resultado.innerHTML = "❌ No aplica descuento.";
+      }
+    }
+  </script>
+</body>
+</html>

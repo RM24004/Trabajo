@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Acceso al portal</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+      background-color: #f4f4f9;
+    }
+    table {
+      margin: auto;
+      border-collapse: collapse;
+      width: 60%;
+      background-color: #ffffff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+    th, td {
+      border: 1px solid #333;
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+    input {
+      padding: 5px;
+      text-align: center;
+    }
+    button {
+      margin-top: 15px;
+      padding: 8px 15px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    #resultado {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 18px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h2>Verificación de acceso al portal</h2>
+  <table>
+    <tr>
+      <th>Tipo de alumno</th>
+      <th>Edad</th>
+    </tr>
+    <tr>
+      <td>
+        <select id="tipo">
+          <option value="FP">FP</option>
+          <option value="Otro">Otro</option>
+        </select>
+      </td>
+      <td><input type="number" id="edad" min="0"></td>
+    </tr>
+  </table>
+  <button onclick="verificar()">Verificar acceso</button>
+
+  <div id="resultado"></div>
+
+  <script>
+    function verificar() {
+      let tipo = document.getElementById("tipo").value;
+      let edad = parseInt(document.getElementById("edad").value);
+      let resultado = document.getElementById("resultado");
+
+      if (tipo === "FP" && edad >= 18) {
+        resultado.innerHTML = "Bienvenido al portal ✅";
+      } else {
+        resultado.innerHTML = "Acceso denegado ❌";
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Ejercicio con número 7</title>
+</head>
+<body>
+  <h2>Introduce números (se detiene al ingresar 7)</h2>
+  <div id="salida"></div>
+
+  <script>
+    let numero;
+    let salida = document.getElementById("salida");
+
+    do {
+      numero = parseInt(prompt("Introduce un número:"));
+      salida.innerHTML += numero + "<br>";
+    } while (numero !== 7);
+
+    salida.innerHTML += "¡Programa terminado! Se ingresó el número 7.";
+  </script>
+</body>
+</html>

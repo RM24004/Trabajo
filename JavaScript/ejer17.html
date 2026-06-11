@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Comparar dos números</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      text-align: center;
+      margin-top: 50px;
+    }
+    table {
+      margin: auto;
+      border-collapse: collapse;
+      width: 50%;
+      background-color: #ffffff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+    th, td {
+      border: 1px solid #333;
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+    #resultado {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #333;
+    }
+    input[type="number"] {
+      width: 80px;
+      padding: 5px;
+      text-align: center;
+    }
+    button {
+      margin-top: 10px;
+      padding: 8px 15px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h2>Comparar dos números</h2>
+  <table>
+    <tr>
+      <th>Número 1</th>
+      <th>Número 2</th>
+    </tr>
+    <tr>
+      <td><input type="number" id="num1"></td>
+      <td><input type="number" id="num2"></td>
+    </tr>
+  </table>
+  <button onclick="comparar()">Comparar</button>
+
+  <div id="resultado"></div>
+
+  <script>
+    function comparar() {
+      let n1 = parseFloat(document.getElementById("num1").value);
+      let n2 = parseFloat(document.getElementById("num2").value);
+      let resultado = document.getElementById("resultado");
+
+      if (isNaN(n1) || isNaN(n2)) {
+        resultado.innerHTML = "⚠️ Por favor introduce ambos números.";
+      } else if (n1 > n2) {
+        resultado.innerHTML = "El mayor es: " + n1;
+      } else if (n2 > n1) {
+        resultado.innerHTML = "El mayor es: " + n2;
+      } else {
+        resultado.innerHTML = "Los números son iguales.";
+      }
+    }
+  </script>
+</body>
+</html>
