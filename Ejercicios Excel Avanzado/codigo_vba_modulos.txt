@@ -1,0 +1,633 @@
+' ===== Módulo8.bas =====
+Attribute VB_Name = "Módulo8"
+Sub SalidaInventario()
+
+    Dim codigo As String
+    Dim cantidad As Integer
+    Dim ultimaFila As Long
+    Dim i As Long
+    Dim stockActual As Integer
+    Dim encontrado As Boolean
+
+    codigo = InputBox("Ingrese el código del producto")
+
+    cantidad = InputBox("Ingrese la cantidad a retirar")
+
+    ultimaFila = Cells(Rows.Count, 1).End(xlUp).Row
+
+    encontrado = False
+
+    For i = 2 To ultimaFila
+
+        If Cells(i, 1).Value = codigo Then
+
+            encontrado = True
+
+            stockActual = Cells(i, 3).Value
+
+            If cantidad > stockActual Then
+
+                MsgBox "No hay suficiente stock disponible."
+
+            Else
+
+                Cells(i, 3).Value = stockActual - cantidad
+
+                MsgBox "Salida registrada correctamente" & vbNewLine & vbNewLine & _
+                       "Stock anterior: " & stockActual & vbNewLine & _
+                       "Stock actual: " & Cells(i, 3).Value
+
+            End If
+
+            Exit For
+
+        End If
+
+    Next i
+
+    If encontrado = False Then
+
+        MsgBox "Producto no encontrado."
+
+    End If
+
+End Sub
+
+Sub RegistrarEntrada()
+
+    Dim codigo As String
+    Dim cantidad As Integer
+    Dim ultimaFila As Long
+    Dim i As Long
+    Dim cantidadAnterior As Integer
+    Dim encontrado As Boolean
+
+    codigo = InputBox("Ingrese el código del producto")
+
+    cantidad = InputBox("Ingrese la cantidad a agregar")
+
+    ultimaFila = Cells(Rows.Count, 1).End(xlUp).Row
+
+    encontrado = False
+
+    For i = 2 To ultimaFila
+
+        If Cells(i, 1).Value = codigo Then
+
+            cantidadAnterior = Cells(i, 3).Value
+
+            Cells(i, 3).Value = Cells(i, 3).Value + cantidad
+
+            encontrado = True
+
+            MsgBox "Stock actualizado correctamente" & vbNewLine & _
+                   "Cantidad anterior: " & cantidadAnterior & vbNewLine & _
+                   "Cantidad nueva: " & Cells(i, 3).Value
+
+            Exit For
+
+        End If
+
+    Next i
+
+    If encontrado = False Then
+
+        MsgBox "El producto no existe en el inventario"
+
+    End If
+
+End Sub
+
+
+
+' ===== Módulo1.bas =====
+Attribute VB_Name = "Módulo1"
+Sub NuevoRegistro()
+
+    Range("C2:C5").ClearContents
+
+End Sub
+Sub NuevoRegistro2()
+
+    Dim respuesta As VbMsgBoxResult
+
+    respuesta = MsgBox("¿Desea limpiar los datos actuales?", vbYesNo + vbQuestion, "Confirmación")
+
+    If respuesta = vbYes Then
+
+        Range("C2:C5").ClearContents
+
+        Range("C2").Select
+
+        MsgBox "Formulario preparado para un nuevo registro.", vbInformation
+
+    End If
+
+End Sub
+
+
+' ===== Módulo2.bas =====
+Attribute VB_Name = "Módulo2"
+Sub RegistrarProducto()
+
+    Dim fila As Long
+    Dim codigo As String
+    Dim producto As String
+    Dim cantidad As Integer
+    Dim precio As Double
+
+    codigo = InputBox("Ingrese el código")
+    producto = InputBox("Ingrese el producto")
+    cantidad = InputBox("Ingrese la cantidad")
+    precio = InputBox("Ingrese el precio")
+
+    fila = Cells(Rows.Count, 1).End(xlUp).Row + 1
+
+    Cells(fila, 1) = codigo
+    Cells(fila, 2) = producto
+    Cells(fila, 3) = cantidad
+    Cells(fila, 4) = precio
+
+    MsgBox "Producto registrado"
+
+End Sub
+
+
+' ===== Módulo3.bas =====
+Attribute VB_Name = "Módulo3"
+Sub ActualizarExistencias()
+
+    Dim codigo As String
+    Dim cantidad As Integer
+    Dim ultimaFila As Long
+    Dim i As Long
+    Dim cantidadAnterior As Integer
+    Dim encontrado As Boolean
+
+    codigo = InputBox("Ingrese el código del producto")
+
+    cantidad = InputBox("Ingrese la cantidad a agregar")
+
+    ultimaFila = Cells(Rows.Count, 1).End(xlUp).Row
+
+    encontrado = False
+
+    For i = 2 To ultimaFila
+
+        If Cells(i, 1).Value = codigo Then
+
+            cantidadAnterior = Cells(i, 3).Value
+
+            Cells(i, 3).Value = Cells(i, 3).Value + cantidad
+
+            encontrado = True
+
+            MsgBox "Stock actualizado correctamente" & vbNewLine & _
+                   "Cantidad anterior: " & cantidadAnterior & vbNewLine & _
+                   "Cantidad nueva: " & Cells(i, 3).Value
+
+            Exit For
+
+        End If
+
+    Next i
+
+    If encontrado = False Then
+
+        MsgBox "El producto no existe en el inventario"
+
+    End If
+
+End Sub
+
+
+
+' ===== Módulo4.bas =====
+Attribute VB_Name = "Módulo4"
+Sub valorInventario()
+
+    Dim ultimaFila As Long
+    Dim i As Long
+    Dim total As Double
+    Dim cantidadProductos As Integer
+
+    ultimaFila = Cells(Rows.Count, 1).End(xlUp).Row
+
+    total = 0
+    cantidadProductos = 0
+
+    For i = 2 To ultimaFila
+
+        total = total + (Cells(i, 3).Value * Cells(i, 4).Value)
+
+        cantidadProductos = cantidadProductos + 1
+
+    Next i
+
+    MsgBox "RESUMEN DEL INVENTARIO" & vbNewLine & vbNewLine & _
+           "Productos registrados: " & cantidadProductos & vbNewLine & _
+           "Valor total: $" & total
+
+End Sub
+
+
+
+' ===== Módulo5.bas =====
+Attribute VB_Name = "Módulo5"
+Sub BuscarProducto()
+
+    Dim codigo As String
+    Dim ultimaFila As Long
+    Dim i As Long
+    Dim encontrado As Boolean
+
+    codigo = InputBox("Ingrese el código del producto")
+
+    ultimaFila = Cells(Rows.Count, 1).End(xlUp).Row
+
+    encontrado = False
+
+    For i = 2 To ultimaFila
+
+        If Cells(i, 1).Value = codigo Then
+
+            encontrado = True
+
+            MsgBox "INFORMACIÓN DEL PRODUCTO" & vbNewLine & vbNewLine & _
+                   "Código: " & Cells(i, 1).Value & vbNewLine & _
+                   "Producto: " & Cells(i, 2).Value & vbNewLine & _
+                   "Cantidad: " & Cells(i, 3).Value & vbNewLine & _
+                   "Precio: $" & Cells(i, 4).Value
+
+            Exit For
+
+        End If
+
+    Next i
+
+    If encontrado = False Then
+
+        MsgBox "Producto no encontrado."
+
+    End If
+
+End Sub
+
+
+
+' ===== Módulo6.bas =====
+Attribute VB_Name = "Módulo6"
+Sub BuscarProductoNombre()
+
+    Dim producto As String
+    Dim ultimaFila As Long
+    Dim i As Long
+    Dim encontrado As Boolean
+    Dim valor As Double
+
+    producto = InputBox("Ingrese el nombre del producto")
+
+    ultimaFila = Cells(Rows.Count, 2).End(xlUp).Row
+
+    encontrado = False
+
+    For i = 2 To ultimaFila
+
+        If UCase(Cells(i, 2).Value) = UCase(producto) Then
+
+            'valor = Cells(i, 3).Value * Cells(i, 4).Value
+
+            encontrado = True
+
+            MsgBox "PRODUCTO ENCONTRADO" & vbNewLine & vbNewLine & _
+                   "Código: " & Cells(i, 1).Value & vbNewLine & _
+                   "Producto: " & Cells(i, 2).Value & vbNewLine & _
+                   "Cantidad: " & Cells(i, 3).Value & vbNewLine & _
+                   "Precio: $" & Cells(i, 4).Value & vbNewLine & vbNewLine
+                   '"Valor en inventario: $" & valor
+
+            Exit For
+
+        End If
+
+    Next i
+
+    If encontrado = False Then
+
+        MsgBox "Producto no encontrado"
+
+    End If
+
+End Sub
+
+
+
+' ===== Módulo7.bas =====
+Attribute VB_Name = "Módulo7"
+Sub ReporteBajoStock()
+
+    Dim wsInventario As Worksheet
+    Dim wsReporte As Worksheet
+    Dim ultimaFila As Long
+    Dim filaReporte As Long
+    Dim i As Long
+
+    Set wsInventario = ActiveSheet
+
+    On Error Resume Next
+    Application.DisplayAlerts = False
+    Sheets("Bajo_Stock").Delete
+    Application.DisplayAlerts = True
+    On Error GoTo 0
+
+    Set wsReporte = Sheets.Add
+    wsReporte.Name = "Bajo_Stock"
+
+    wsReporte.Range("A1:D1").Value = Array("Código", "Producto", "Cantidad", "Precio")
+
+    filaReporte = 2
+
+    ultimaFila = wsInventario.Cells(Rows.Count, 1).End(xlUp).Row
+
+    For i = 2 To ultimaFila
+
+        If wsInventario.Cells(i, 3).Value < 10 Then
+
+            wsInventario.Rows(i).Copy _
+            Destination:=wsReporte.Rows(filaReporte)
+
+            filaReporte = filaReporte + 1
+
+        End If
+
+    Next i
+
+    MsgBox "Reporte generado correctamente"
+
+End Sub
+
+
+
+' ===== Módulo9.bas =====
+Attribute VB_Name = "Módulo9"
+Sub OrdenarInventario()
+
+    Dim ultimaFila As Long
+
+    ultimaFila = Cells(Rows.Count, 1).End(xlUp).Row
+
+    Range("A1:D" & ultimaFila).Sort _
+        Key1:=Range("B2"), _
+        Order1:=xlAscending, _
+        Header:=xlYes
+
+    MsgBox "Inventario ordenado correctamente."
+
+End Sub
+
+
+
+' ===== Módulo10.bas =====
+Attribute VB_Name = "Módulo10"
+Sub OrdenarInventario2()
+
+    Dim opcion As Integer
+    Dim ultimaFila As Long
+    Dim columnaOrden As String
+    Dim criterio As String
+
+    opcion = InputBox("¿Cómo desea ordenar el inventario?" & vbNewLine & _
+                      "1. Código" & vbNewLine & _
+                      "2. Producto" & vbNewLine & _
+                      "3. Cantidad" & vbNewLine & _
+                      "4. Precio")
+
+    Select Case opcion
+
+        Case 1
+            columnaOrden = "A"
+            criterio = "Código"
+
+        Case 2
+            columnaOrden = "B"
+            criterio = "Producto"
+
+        Case 3
+            columnaOrden = "C"
+            criterio = "Cantidad"
+
+        Case 4
+            columnaOrden = "D"
+            criterio = "Precio"
+
+        Case Else
+            MsgBox "Opción inválida."
+            Exit Sub
+
+    End Select
+
+    ultimaFila = Cells(Rows.Count, 1).End(xlUp).Row
+
+    Range("A1:D" & ultimaFila).Sort _
+        Key1:=Range(columnaOrden & "2"), _
+        Order1:=xlAscending, _
+        Header:=xlYes
+
+    MsgBox "Inventario ordenado por " & criterio
+
+End Sub
+
+
+
+' ===== Módulo11.bas =====
+Attribute VB_Name = "Módulo11"
+Sub RegistrarMovimiento()
+
+    Dim codigo As String
+    Dim tipo As String
+    Dim cantidad As Integer
+    Dim ultimaFila As Long
+    Dim filaMovimiento As Long
+    Dim i As Long
+    Dim encontrado As Boolean
+    Dim stockActual As Integer
+
+    codigo = InputBox("Ingrese el código del producto")
+
+    tipo = InputBox("Ingrese E para Entrada o S para Salida")
+
+    cantidad = InputBox("Ingrese la cantidad")
+
+    ultimaFila = Sheets("Ejercicio_9").Cells(Rows.Count, 1).End(xlUp).Row
+
+    encontrado = False
+
+    For i = 2 To ultimaFila
+
+        If Sheets("Ejercicio_9").Cells(i, 1).Value = codigo Then
+
+            encontrado = True
+
+            stockActual = Sheets("Ejercicio_9").Cells(i, 3).Value
+
+            If UCase(tipo) = "E" Then
+
+                Sheets("Ejercicio_9").Cells(i, 3).Value = stockActual + cantidad
+
+            ElseIf UCase(tipo) = "S" Then
+
+                If cantidad > stockActual Then
+
+                    MsgBox "No hay suficiente stock."
+                    Exit Sub
+
+                End If
+
+                Sheets("Ejercicio_9").Cells(i, 3).Value = stockActual - cantidad
+
+            Else
+
+                MsgBox "Tipo de movimiento inválido."
+                Exit Sub
+
+            End If
+
+            filaMovimiento = Sheets("Movimientos").Cells(Rows.Count, 1).End(xlUp).Row + 1
+
+            Sheets("Movimientos").Cells(filaMovimiento, 1).Value = Date
+            Sheets("Movimientos").Cells(filaMovimiento, 2).Value = codigo
+            Sheets("Movimientos").Cells(filaMovimiento, 3).Value = Sheets("Ejercicio_9").Cells(i, 2).Value
+
+            If UCase(tipo) = "E" Then
+                Sheets("Movimientos").Cells(filaMovimiento, 4).Value = "Entrada"
+            Else
+                Sheets("Movimientos").Cells(filaMovimiento, 4).Value = "Salida"
+            End If
+
+            Sheets("Movimientos").Cells(filaMovimiento, 5).Value = cantidad
+
+            MsgBox "Movimiento registrado correctamente."
+
+            Exit For
+
+        End If
+
+    Next i
+
+    If encontrado = False Then
+
+        MsgBox "Producto no encontrado."
+
+    End If
+
+End Sub
+
+
+' ===== Módulo12.bas =====
+Attribute VB_Name = "Módulo12"
+Sub GenerarDashboard()
+
+    Dim wsInv As Worksheet
+    Dim wsMov As Worksheet
+    Dim wsDash As Worksheet
+
+    Dim ultimaFilaInv As Long
+    Dim ultimaFilaMov As Long
+
+    Dim i As Long
+
+    Dim totalProductos As Long
+    Dim valorInventario As Double
+
+    Dim mayorStock As Long
+    Dim menorStock As Long
+
+    Dim productoMayor As String
+    Dim productoMenor As String
+
+    Dim totalEntradas As Long
+    Dim totalSalidas As Long
+
+    Set wsInv = Sheets("Ejercicio_10")
+    Set wsMov = Sheets("Movimientos")
+    Set wsDash = Sheets("Dashboard")
+
+    wsDash.Cells.Clear
+
+    ultimaFilaInv = wsInv.Cells(Rows.Count, 1).End(xlUp).Row
+
+    totalProductos = ultimaFilaInv - 1
+
+    mayorStock = wsInv.Cells(2, 3).Value
+    menorStock = wsInv.Cells(2, 3).Value
+
+    productoMayor = wsInv.Cells(2, 2).Value
+    productoMenor = wsInv.Cells(2, 2).Value
+
+    valorInventario = 0
+
+    For i = 2 To ultimaFilaInv
+
+        valorInventario = valorInventario + _
+                          (wsInv.Cells(i, 3).Value * _
+                           wsInv.Cells(i, 4).Value)
+
+        If wsInv.Cells(i, 3).Value > mayorStock Then
+
+            mayorStock = wsInv.Cells(i, 3).Value
+            productoMayor = wsInv.Cells(i, 2).Value
+
+        End If
+
+        If wsInv.Cells(i, 3).Value < menorStock Then
+
+            menorStock = wsInv.Cells(i, 3).Value
+            productoMenor = wsInv.Cells(i, 2).Value
+
+        End If
+
+    Next i
+
+    ultimaFilaMov = wsMov.Cells(Rows.Count, 1).End(xlUp).Row
+
+    For i = 2 To ultimaFilaMov
+
+        If wsMov.Cells(i, 4).Value = "Entrada" Then
+
+            totalEntradas = totalEntradas + 1
+
+        ElseIf wsMov.Cells(i, 4).Value = "Salida" Then
+
+            totalSalidas = totalSalidas + 1
+
+        End If
+
+    Next i
+
+    wsDash.Range("A1").Value = "Indicador"
+    wsDash.Range("B1").Value = "Resultado"
+
+    wsDash.Range("A2").Value = "Total productos"
+    wsDash.Range("B2").Value = totalProductos
+
+    wsDash.Range("A3").Value = "Valor total inventario"
+    wsDash.Range("B3").Value = valorInventario
+
+    wsDash.Range("A4").Value = "Mayor stock"
+    wsDash.Range("B4").Value = productoMayor
+
+    wsDash.Range("A5").Value = "Menor stock"
+    wsDash.Range("B5").Value = productoMenor
+
+    wsDash.Range("A6").Value = "Entradas registradas"
+    wsDash.Range("B6").Value = totalEntradas
+
+    wsDash.Range("A7").Value = "Salidas registradas"
+    wsDash.Range("B7").Value = totalSalidas
+
+    MsgBox "Dashboard generado correctamente."
+
+End Sub
+
+
+

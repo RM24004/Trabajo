@@ -1,0 +1,219 @@
+' ===== UserForm1.frm =====
+Attribute VB_Name = "UserForm1"
+Attribute VB_Base = "0{C8427C69-6914-4433-969E-6B6AA476A467}{9B79BECF-2A02-4AE7-BDE2-948C6F0DB0B2}"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = False
+Attribute VB_PredeclaredId = True
+Attribute VB_Exposed = False
+Attribute VB_TemplateDerived = False
+Attribute VB_Customizable = False
+Private Sub UserForm_Initialize()
+
+    ' --- Llenar Tipo de movimiento ---
+    cboTipo.Clear
+    cboTipo.AddItem "Entrada"
+    cboTipo.AddItem "Salida"
+
+    ' --- Llenar Solicitantes desde la hoja ---
+    Dim ultimaFilaSolic As Long
+    Dim i As Long
+    
+    ultimaFilaSolic = Sheets("Solicitantes").Cells(Rows.Count, 1).End(xlUp).Row
+    
+    cboSolicitante.Clear
+    For i = 2 To ultimaFilaSolic   ' Empieza en fila 2 para saltar encabezados
+        cboSolicitante.AddItem Sheets("Solicitantes").Cells(i, 1).Value & " - " & Sheets("Solicitantes").Cells(i, 2).Value
+        ' Ejemplo: S001 - Juan Pérez
+    Next i
+
+    ' --- Llenar Equipos desde la hoja ---
+    Dim ultimaFilaEq As Long
+    
+    ultimaFilaEq = Sheets("Inventario").Cells(Rows.Count, 1).End(xlUp).Row
+    
+    cboEquipo.Clear
+    For i = 2 To ultimaFilaEq
+        cboEquipo.AddItem Sheets("Inventario").Cells(i, 1).Value & " - " & Sheets("Inventario").Cells(i, 2).Value
+        ' Ejemplo: EQ001 - Taladro Bosch
+    Next i
+
+End Sub
+
+Private Sub cmdCerrar_Click()
+Unload Me
+End Sub
+
+Private Sub cmdGuardar_Click()
+ Dim fila As Long
+    Dim filaInv As Long
+    Dim codigoEq As String
+    Dim cantMov As Long
+    
+    ' Buscar la primera fila vacía en la hoja Movimientos
+    fila = Sheets("Movimientos").Cells(Rows.Count, 1).End(xlUp).Row + 1
+    
+    ' Insertar datos en la hoja Movimientos
+    With Sheets("Movimientos")
+        .Cells(fila, 1).Value = "M" & Format(fila, "000") ' ID Movimiento automático
+        .Cells(fila, 2).Value = txtFecha.Value
+        .Cells(fila, 3).Value = cboTipo.Value
+        .Cells(fila, 4).Value = cboSolicitante.Value
+        .Cells(fila, 5).Value = cboEquipo.Value
+        .Cells(fila, 6).Value = txtCantidad.Value
+        .Cells(fila, 7).Value = txtObs.Value
+    End With
+    
+    ' --- Actualizar Inventario ---
+    codigoEq = Split(cboEquipo.Value, " - ")(0) ' Extrae el código (ej: EQ001)
+    cantMov = CLng(txtCantidad.Value)
+    
+    ' Buscar el equipo en la hoja Inventario
+    filaInv = Application.Match(codigoEq, Sheets("Inventario").Range("A:A"), 0)
+    
+    If Not IsError(filaInv) Then
+        With Sheets("Inventario")
+            If cboTipo.Value = "Salida" Then
+                .Cells(filaInv, 4).Value = .Cells(filaInv, 4).Value - cantMov
+            ElseIf cboTipo.Value = "Entrada" Then
+                .Cells(filaInv, 4).Value = .Cells(filaInv, 4).Value + cantMov
+            End If
+        End With
+    End If
+    
+    MsgBox "Movimiento registrado y stock actualizado correctamente", vbInformation
+End Sub
+
+Private Sub cmdNuevo_Click()
+txtFecha.Value = ""
+    cboTipo.Value = ""
+    cboSolicitante.Value = ""
+    cboEquipo.Value = ""
+    txtCantidad.Value = ""
+    txtObs.Value = ""
+End Sub
+
+
+' ===== UserForm2.frm =====
+Attribute VB_Name = "UserForm2"
+Attribute VB_Base = "0{0E60FBE8-72AA-4D13-8902-2981A37F29BE}{DA74FFBD-D463-4FAB-851F-F802D2B5FBFF}"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = False
+Attribute VB_PredeclaredId = True
+Attribute VB_Exposed = False
+Attribute VB_TemplateDerived = False
+Attribute VB_Customizable = False
+Private Sub cmdCerrar_Click()
+    Unload Me
+End Sub
+
+Private Sub cmdGuardar_Click()
+ Dim fila As Long
+    
+    ' Buscar la primera fila vacía en Inventario
+    fila = Sheets("Inventario").Cells(Rows.Count, 1).End(xlUp).Row + 1
+    
+    ' Insertar datos
+    With Sheets("Inventario")
+        .Cells(fila, 1).Value = txtCodigo.Value
+        .Cells(fila, 2).Value = txtNombre.Value
+        .Cells(fila, 3).Value = cboCategoria.Value
+        .Cells(fila, 4).Value = txtCantidad.Value
+        .Cells(fila, 5).Value = txtPrecio.Value
+        .Cells(fila, 6).Value = cboEstado.Value
+    End With
+    
+    MsgBox "Herramienta registrada en Inventario", vbInformation
+End Sub
+
+Private Sub cmdNuevo_Click()
+ txtCodigo.Value = ""
+    txtNombre.Value = ""
+    txtCantidad.Value = ""
+    txtPrecio.Value = ""
+    cboCategoria.Value = ""
+    cboEstado.Value = ""
+End Sub
+
+Private Sub UserForm_Initialize()
+    ' Categorías
+    cboCategoria.Clear
+    cboCategoria.AddItem "Herramienta"
+    cboCategoria.AddItem "Protección"
+    cboCategoria.AddItem "Vehículo"
+    
+    ' Estado
+    cboEstado.Clear
+    cboEstado.AddItem "Activo"
+    cboEstado.AddItem "En reparación"
+    cboEstado.AddItem "Baja"
+End Sub
+
+
+
+' ===== UserForm3.frm =====
+Attribute VB_Name = "UserForm3"
+Attribute VB_Base = "0{3E0A4CB8-1D34-4763-9034-0889FFAE5C13}{47F38A1B-AB33-4A5F-BD93-508129646EB8}"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = False
+Attribute VB_PredeclaredId = True
+Attribute VB_Exposed = False
+Attribute VB_TemplateDerived = False
+Attribute VB_Customizable = False
+Private Sub cmdCerrar_Click()
+Unload Me
+End Sub
+
+Private Sub cmdGuardar_Click()
+Dim fila As Long
+    
+    ' Buscar la primera fila vacía en la hoja Solicitantes
+    fila = Sheets("Solicitantes").Cells(Rows.Count, 1).End(xlUp).Row + 1
+    
+    ' Insertar datos
+    With Sheets("Solicitantes")
+        .Cells(fila, 1).Value = txtID.Value
+        .Cells(fila, 2).Value = txtNombre.Value
+        .Cells(fila, 3).Value = txtCargo.Value
+        .Cells(fila, 4).Value = txtTel.Value
+        .Cells(fila, 5).Value = txtCorreo.Value
+    End With
+    
+    MsgBox "Solicitante registrado correctamente", vbInformation
+End Sub
+
+Private Sub cmdNuevo_Click()
+    txtID.Value = ""
+    txtNombre.Value = ""
+    txtCargo.Value = ""
+    txtTel.Value = ""
+    txtCorreo.Value = ""
+End Sub
+
+
+' ===== frmMenu.frm =====
+Attribute VB_Name = "frmMenu"
+Attribute VB_Base = "0{405E517E-3208-47EC-A221-38408C39E689}{6AB7B6CE-C1F5-42FD-888B-086FC5115A07}"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = False
+Attribute VB_PredeclaredId = True
+Attribute VB_Exposed = False
+Attribute VB_TemplateDerived = False
+Attribute VB_Customizable = False
+Private Sub cmdInventario_Click()
+    UserForm2.Show   ' Cambia UserForm2 por el nombre real del formulario de Inventario
+End Sub
+
+Private Sub cmdMovimientos_Click()
+    UserForm1.Show   ' Cambia UserForm1 por el nombre real del formulario de Movimientos
+End Sub
+
+Private Sub cmdSolicitantes_Click()
+    UserForm3.Show   ' Cambia UserForm3 por el nombre real del formulario de Solicitantes
+End Sub
+
+Private Sub cmdCerrar_Click()
+    Unload Me
+End Sub
+
+
+

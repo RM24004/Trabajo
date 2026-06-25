@@ -1,0 +1,30 @@
+' ===== Módulo1.bas =====
+Attribute VB_Name = "Módulo1"
+Sub RegistrarMovimiento()
+    UserForm1.Show
+End Sub
+
+
+
+' ===== Módulo2.bas =====
+Attribute VB_Name = "Módulo2"
+Sub RegistrarInventario()
+    UserForm2.Show
+End Sub
+
+
+' ===== Módulo3.bas =====
+Attribute VB_Name = "Módulo3"
+Sub RegistrarSolicitante()
+    UserForm1.Show
+End Sub
+
+
+' ===== Módulo4.bas =====
+Attribute VB_Name = "Módulo4"
+Sub MostrarMenu()
+    frmMenu.Show
+End Sub
+
+
+
