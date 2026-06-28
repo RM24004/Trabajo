@@ -1,0 +1,163 @@
+==Crear Bd==
+CREATE DATABASE Biblioteca;
+USE Biblioteca;
+
+==Tabla Autores==
+CREATE TABLE Autores (
+    id_autor INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL,
+    apellido VARCHAR(50) NOT NULL,
+    pais VARCHAR(40) NOT NULL
+);
+
+==Tabla Categorias==
+CREATE TABLE Categorias (
+    id_categoria INT AUTO_INCREMENT PRIMARY KEY,
+    nombre_categoria VARCHAR(50) NOT NULL
+);
+
+==Tabla Libros==
+CREATE TABLE Libros (
+    id_libro INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(100) NOT NULL,
+    anio_publicacion YEAR NOT NULL,
+    precio DECIMAL(8,2) NOT NULL,
+    stock INT NOT NULL,
+    id_autor INT NOT NULL,
+    id_categoria INT NOT NULL,
+
+    FOREIGN KEY (id_autor)
+        REFERENCES Autores(id_autor),
+
+    FOREIGN KEY (id_categoria)
+        REFERENCES Categorias(id_categoria)
+);
+==Insertar Libros==
+INSERT INTO Autores(nombre, apellido, pais)
+VALUES
+('Gabriel','García Márquez','Colombia'),
+('Mario','Vargas Llosa','Perú'),
+('Julio','Verne','Francia'),
+('Stephen','King','Estados Unidos');
+
+==Categorias==
+INSERT INTO Categorias(nombre_categoria)
+VALUES
+('Novela'),
+('Ciencia Ficción'),
+('Terror'),
+('Historia');
+
+==Libros==
+INSERT INTO Libros
+(titulo, anio_publicacion, precio, stock, id_autor, id_categoria)
+VALUES
+('Cien Años de Soledad',1967,25.50,20,1,1),
+('La Ciudad y los Perros',1963,19.99,15,2,1),
+('Viaje al Centro de la Tierra',1864,18.75,30,3,2),
+('It',1986,29.99,10,4,3),
+('El Resplandor',1977,24.99,12,4,3);
+
+==update==
+UPDATE Libros
+SET precio = 31.50
+WHERE titulo = 'It';
+
+UPDATE Libros
+SET stock = 18
+WHERE titulo = 'El Resplandor';
+
+UPDATE Autores
+SET pais = 'Francia Europea'
+WHERE nombre = 'Julio'
+AND apellido = 'Verne';
+
+==Delete==
+DELETE FROM Categorias
+WHERE nombre_categoria = 'Historia';
+
+DELETE FROM Libros
+WHERE titulo = 'La Ciudad y los Perros';
+
+==Select==
+SELECT *
+FROM Autores;
+
+SELECT *
+FROM Libros;
+
+SELECT titulo, precio
+FROM Libros;
+
+SELECT *
+FROM Libros
+WHERE precio > 25;
+
+SELECT *
+FROM Libros
+WHERE stock <= 15;
+
+SELECT *
+FROM Libros
+WHERE anio_publicacion > 1970;
+
+SELECT *
+FROM Libros
+ORDER BY precio DESC;
+
+SELECT *
+FROM Libros
+LIMIT 3;
+
+==Inner Join==
+SELECT
+    Libros.titulo,
+    Autores.nombre,
+    Autores.apellido
+FROM Libros
+INNER JOIN Autores
+ON Libros.id_autor = Autores.id_autor;
+
+SELECT
+    Libros.titulo,
+    Categorias.nombre_categoria
+FROM Libros
+INNER JOIN Categorias
+ON Libros.id_categoria = Categorias.id_categoria;
+
+SELECT
+    Libros.titulo,
+    Autores.nombre,
+    Autores.apellido,
+    Categorias.nombre_categoria,
+    Libros.precio
+FROM Libros
+INNER JOIN Autores
+ON Libros.id_autor = Autores.id_autor
+INNER JOIN Categorias
+ON Libros.id_categoria = Categorias.id_categoria;
+
+SELECT
+    Libros.titulo,
+    Categorias.nombre_categoria
+FROM Libros
+INNER JOIN Categorias
+ON Libros.id_categoria = Categorias.id_categoria
+WHERE Categorias.nombre_categoria = 'Terror';
+
+SELECT
+    Libros.titulo,
+    Autores.nombre,
+    Autores.apellido
+FROM Libros
+INNER JOIN Autores
+ON Libros.id_autor = Autores.id_autor
+WHERE Autores.nombre = 'Stephen'
+AND Autores.apellido = 'King';
+
+==Script completo reiniciar==
+DROP DATABASE IF EXISTS Biblioteca;
+
+CREATE DATABASE Biblioteca;
+
+USE Biblioteca;

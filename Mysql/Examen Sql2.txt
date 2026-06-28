@@ -1,0 +1,361 @@
+DROP DATABASE IF EXISTS BibliotecaUniversitaria;
+CREATE DATABASE BibliotecaUniversitaria;
+USE BibliotecaUniversitaria;
+
+-- =====================================================
+-- TABLA: AUTORES
+-- =====================================================
+
+CREATE TABLE Autores(
+    id_autor INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL,
+    apellido VARCHAR(50) NOT NULL,
+    pais VARCHAR(40) NOT NULL
+);
+
+-- =====================================================
+-- TABLA: EDITORIALES
+-- =====================================================
+
+CREATE TABLE Editoriales(
+    id_editorial INT AUTO_INCREMENT PRIMARY KEY,
+    nombre_editorial VARCHAR(60) NOT NULL,
+    pais VARCHAR(40) NOT NULL
+);
+
+-- =====================================================
+-- TABLA: CATEGORIAS
+-- =====================================================
+
+CREATE TABLE Categorias(
+    id_categoria INT AUTO_INCREMENT PRIMARY KEY,
+    nombre_categoria VARCHAR(50) NOT NULL
+);
+
+-- =====================================================
+-- TABLA: LIBROS
+-- =====================================================
+
+CREATE TABLE Libros(
+    id_libro INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(100) NOT NULL,
+    anio_publicacion YEAR NOT NULL,
+    precio DECIMAL(8,2) NOT NULL,
+    stock INT NOT NULL,
+    id_autor INT NOT NULL,
+    id_categoria INT NOT NULL,
+    id_editorial INT NOT NULL,
+
+    FOREIGN KEY(id_autor) REFERENCES Autores(id_autor),
+    FOREIGN KEY(id_categoria) REFERENCES Categorias(id_categoria),
+    FOREIGN KEY(id_editorial) REFERENCES Editoriales(id_editorial)
+);
+
+-- =====================================================
+-- TABLA: ESTUDIANTES
+-- =====================================================
+
+CREATE TABLE Estudiantes(
+    id_estudiante INT AUTO_INCREMENT PRIMARY KEY,
+    carnet VARCHAR(15) UNIQUE NOT NULL,
+    nombre VARCHAR(50) NOT NULL,
+    apellido VARCHAR(50) NOT NULL,
+    carrera VARCHAR(60) NOT NULL
+);
+
+-- =====================================================
+-- TABLA: PRESTAMOS
+-- =====================================================
+
+CREATE TABLE Prestamos(
+    id_prestamo INT AUTO_INCREMENT PRIMARY KEY,
+    id_estudiante INT NOT NULL,
+    fecha_prestamo DATE NOT NULL,
+    fecha_devolucion DATE NOT NULL,
+
+    FOREIGN KEY(id_estudiante)
+        REFERENCES Estudiantes(id_estudiante)
+);
+
+-- =====================================================
+-- TABLA: DETALLE PRESTAMO
+-- =====================================================
+
+CREATE TABLE DetallePrestamo(
+    id_detalle INT AUTO_INCREMENT PRIMARY KEY,
+    id_prestamo INT NOT NULL,
+    id_libro INT NOT NULL,
+    cantidad INT NOT NULL,
+
+    FOREIGN KEY(id_prestamo)
+        REFERENCES Prestamos(id_prestamo),
+
+    FOREIGN KEY(id_libro)
+        REFERENCES Libros(id_libro)
+);
+
+-- =====================================================
+-- INSERT AUTORES
+-- =====================================================
+
+INSERT INTO Autores(nombre,apellido,pais)
+VALUES
+('Gabriel','Garcia Marquez','Colombia'),
+('Mario','Vargas Llosa','Peru'),
+('Julio','Verne','Francia'),
+('Stephen','King','Estados Unidos'),
+('Isabel','Allende','Chile');
+
+-- =====================================================
+-- INSERT EDITORIALES
+-- =====================================================
+
+INSERT INTO Editoriales(nombre_editorial,pais)
+VALUES
+('Planeta','España'),
+('Alfaguara','España'),
+('Penguin Random House','Estados Unidos');
+
+-- =====================================================
+-- INSERT CATEGORIAS
+-- =====================================================
+
+INSERT INTO Categorias(nombre_categoria)
+VALUES
+('Novela'),
+('Ciencia Ficcion'),
+('Terror'),
+('Historia');
+
+-- =====================================================
+-- INSERT LIBROS
+-- =====================================================
+
+INSERT INTO Libros
+(titulo,anio_publicacion,precio,stock,id_autor,id_categoria,id_editorial)
+VALUES
+('Cien Años de Soledad',1967,25.50,20,1,1,1),
+('La Ciudad y los Perros',1963,19.99,15,2,1,2),
+('Viaje al Centro de la Tierra',1864,18.75,30,3,2,1),
+('It',1986,29.99,10,4,3,3),
+('El Resplandor',1977,24.99,12,4,3,3),
+('La Casa de los Espiritus',1982,22.50,8,5,1,2),
+('Veinte Mil Leguas de Viaje Submarino',1870,17.80,18,3,2,1),
+('Carrie',1974,20.00,6,4,3,3);
+
+-- =====================================================
+-- INSERT ESTUDIANTES
+-- =====================================================
+
+INSERT INTO Estudiantes(carnet,nombre,apellido,carrera)
+VALUES
+('BU001','Carlos','Lopez','Ingenieria'),
+('BU002','Ana','Martinez','Medicina'),
+('BU003','Luis','Hernandez','Derecho'),
+('BU004','Maria','Gomez','Arquitectura'),
+('BU005','Jose','Ramirez','Informatica');
+
+-- =====================================================
+-- INSERT PRESTAMOS
+-- =====================================================
+
+INSERT INTO Prestamos
+(id_estudiante,fecha_prestamo,fecha_devolucion)
+VALUES
+(1,'2026-06-01','2026-06-10'),
+(2,'2026-06-03','2026-06-12'),
+(5,'2026-06-05','2026-06-15');
+
+-- =====================================================
+-- INSERT DETALLE PRESTAMO
+-- =====================================================
+
+INSERT INTO DetallePrestamo
+(id_prestamo,id_libro,cantidad)
+VALUES
+(1,1,1),
+(1,3,1),
+(2,4,1),
+(2,5,1),
+(3,6,2);
+
+-- =====================================================
+-- UPDATE
+-- =====================================================
+
+UPDATE Libros
+SET precio = precio * 1.10
+WHERE id_libro = 1;
+
+UPDATE Estudiantes
+SET carrera = 'Ingenieria en Sistemas'
+WHERE id_estudiante = 5;
+
+UPDATE Libros
+SET stock = 25
+WHERE id_libro = 4;
+
+UPDATE Prestamos
+SET fecha_devolucion = '2026-06-20'
+WHERE id_prestamo = 3;
+
+-- =====================================================
+-- DELETE
+-- =====================================================
+
+DELETE FROM DetallePrestamo
+WHERE id_detalle = 5;
+
+DELETE FROM Prestamos
+WHERE id_prestamo = 3;
+
+DELETE FROM Libros
+WHERE id_libro = 2;
+
+DELETE FROM Categorias
+WHERE id_categoria = 4;
+
+-- =====================================================
+-- SELECT BASICOS
+-- =====================================================
+
+SELECT * FROM Libros;
+
+SELECT titulo,precio
+FROM Libros;
+
+SELECT *
+FROM Libros
+WHERE precio > 20;
+
+SELECT *
+FROM Libros
+WHERE stock < 10;
+
+SELECT *
+FROM Libros
+WHERE anio_publicacion > 2000;
+
+SELECT *
+FROM Libros
+ORDER BY precio DESC;
+
+SELECT *
+FROM Libros
+LIMIT 5;
+
+-- =====================================================
+-- INNER JOIN
+-- =====================================================
+
+SELECT
+L.titulo,
+A.nombre,
+A.apellido
+FROM Libros L
+INNER JOIN Autores A
+ON L.id_autor=A.id_autor;
+
+SELECT
+L.titulo,
+C.nombre_categoria
+FROM Libros L
+INNER JOIN Categorias C
+ON L.id_categoria=C.id_categoria;
+
+SELECT
+L.titulo,
+E.nombre_editorial
+FROM Libros L
+INNER JOIN Editoriales E
+ON L.id_editorial=E.id_editorial;
+
+SELECT
+L.titulo,
+A.nombre,
+A.apellido,
+C.nombre_categoria,
+E.nombre_editorial,
+L.precio
+FROM Libros L
+INNER JOIN Autores A
+ON L.id_autor=A.id_autor
+INNER JOIN Categorias C
+ON L.id_categoria=C.id_categoria
+INNER JOIN Editoriales E
+ON L.id_editorial=E.id_editorial;
+
+SELECT
+ES.nombre,
+ES.apellido,
+P.fecha_prestamo
+FROM Estudiantes ES
+INNER JOIN Prestamos P
+ON ES.id_estudiante=P.id_estudiante;
+
+SELECT
+ES.nombre,
+ES.apellido,
+L.titulo
+FROM Estudiantes ES
+INNER JOIN Prestamos P
+ON ES.id_estudiante=P.id_estudiante
+INNER JOIN DetallePrestamo D
+ON P.id_prestamo=D.id_prestamo
+INNER JOIN Libros L
+ON D.id_libro=L.id_libro;
+
+SELECT
+L.titulo
+FROM Estudiantes ES
+INNER JOIN Prestamos P
+ON ES.id_estudiante=P.id_estudiante
+INNER JOIN DetallePrestamo D
+ON P.id_prestamo=D.id_prestamo
+INNER JOIN Libros L
+ON D.id_libro=L.id_libro
+WHERE ES.nombre='Carlos';
+
+SELECT
+P.id_prestamo,
+SUM(D.cantidad) AS TotalLibros
+FROM Prestamos P
+INNER JOIN DetallePrestamo D
+ON P.id_prestamo=D.id_prestamo
+GROUP BY P.id_prestamo;
+
+-- =====================================================
+-- CONSULTAS AVANZADAS
+-- =====================================================
+
+SELECT COUNT(*) AS TotalLibros
+FROM Libros;
+
+SELECT AVG(precio) AS PrecioPromedio
+FROM Libros;
+
+SELECT MAX(precio) AS LibroMasCaro
+FROM Libros;
+
+SELECT MIN(precio) AS LibroMasBarato
+FROM Libros;
+
+SELECT COUNT(*) AS TotalPrestamos
+FROM Prestamos;
+
+SELECT
+C.nombre_categoria,
+COUNT(*) AS CantidadLibros
+FROM Libros L
+INNER JOIN Categorias C
+ON L.id_categoria=C.id_categoria
+GROUP BY C.nombre_categoria;
+
+SELECT
+ES.nombre,
+ES.apellido,
+COUNT(P.id_prestamo) AS PrestamosRealizados
+FROM Estudiantes ES
+LEFT JOIN Prestamos P
+ON ES.id_estudiante=P.id_estudiante
+GROUP BY ES.id_estudiante, ES.nombre, ES.apellido;
