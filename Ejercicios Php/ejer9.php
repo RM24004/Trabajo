@@ -16,28 +16,16 @@ Nota 3:
 <input type="submit">
 
 </form>
-
 <?php
-
 if(isset($_POST["n1"])){
-
     $promedio=($_POST["n1"]+$_POST["n2"]+$_POST["n3"])/3;
-
     echo "Promedio: ".$promedio."<br>";
-
     if($promedio>=6){
-
         echo "Aprobado";
-
     }else{
-
         echo "Reprobado";
-
     }
-
 }
-
 ?>
-
 </body>
 </html>

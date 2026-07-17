@@ -1,27 +1,18 @@
 <!DOCTYPE html>
 <html>
 <body>
-
 <form method="POST">
-
 Nombre:
 <input type="text" name="nombre"><br><br>
-
 Edad:
 <input type="number" name="edad"><br><br>
-
 Carrera:
 <input type="text" name="carrera"><br><br>
-
 Promedio:
 <input type="number" step="0.01" name="promedio"><br><br>
-
 <input type="submit">
-
 </form>
-
 <?php
-
 if(isset($_POST["nombre"])){
 
     $nombre=$_POST["nombre"];
@@ -47,10 +38,7 @@ if(isset($_POST["nombre"])){
         echo "<h3 style='color:red;'>Estado: Reprobado</h3>";
 
     }
-
 }
-
 ?>
-
 </body>
 </html>

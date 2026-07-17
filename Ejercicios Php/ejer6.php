@@ -24,10 +24,7 @@ if(isset($_POST["numero"])){
         echo "$numero x $i = ".($numero*$i)."<br>";
 
     }
-
 }
-
 ?>
-
 </body>
 </html>
