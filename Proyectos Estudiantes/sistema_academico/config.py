@@ -1,0 +1,17 @@
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent
+DIRECTORIO_DATOS = BASE_DIR / "datos"
+
+ARCHIVO_USUARIOS = DIRECTORIO_DATOS / "usuarios.json"
+ARCHIVO_ESTUDIANTES = DIRECTORIO_DATOS / "estudiantes.json"
+ARCHIVO_MATERIAS = DIRECTORIO_DATOS / "materias.json"
+ARCHIVO_NOTAS = DIRECTORIO_DATOS / "notas.json"
+
+TITULO_APP = "Sistema Academico"
+VERSION = "1.0.0"
+
+NOTA_MINIMA = 0.0
+NOTA_MAXIMA = 100.0
+CREDITOS_MINIMOS = 1
+CREDITOS_MAXIMOS = 10

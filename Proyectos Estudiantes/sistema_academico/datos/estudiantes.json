@@ -1,0 +1,24 @@
+[
+  {
+    "id": "EST-0001",
+    "cedula": "00001",
+    "nombres": "victor",
+    "apellidos": "rodirguez",
+    "email": "victor@mail.com",
+    "telefono": "12345678",
+    "carrera": "ingenieria",
+    "activo": true,
+    "fecha_registro": "2026-10-02"
+  },
+  {
+    "id": "EST-0002",
+    "cedula": "00002",
+    "nombres": "alberto",
+    "apellidos": "monterrosa",
+    "email": "alber@mail.com",
+    "telefono": "12345678",
+    "carrera": "ciencia",
+    "activo": true,
+    "fecha_registro": "2026-10-02"
+  }
+]

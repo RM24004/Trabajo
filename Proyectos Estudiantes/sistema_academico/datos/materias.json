@@ -1,0 +1,10 @@
+[
+  {
+    "id": "MAT-0001",
+    "codigo": "001",
+    "nombre": "ciencia",
+    "creditos": 1,
+    "semestre": 2,
+    "docente": "Docente Principal"
+  }
+]

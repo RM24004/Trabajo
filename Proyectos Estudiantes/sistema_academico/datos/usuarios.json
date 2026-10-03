@@ -1,0 +1,29 @@
+[
+  {
+    "id": "USR-0001",
+    "nombre_usuario": "admin",
+    "sal": "e87724ad66c3c94ea9595a9856f5aff4",
+    "clave_hash": "cdfc7cd3ef1213277ef219cf31017cb74eea21d4dacc9e053b73ceb1d4e3a71c",
+    "rol": "docente",
+    "nombre": "Docente Principal",
+    "estudiante_id": null
+  },
+  {
+    "id": "USR-0002",
+    "nombre_usuario": "vicpra",
+    "sal": "14624f9815f5c2cb0596e72123b4ac33",
+    "clave_hash": "7a195ea0f7a42e4a0d073491abcb2562c9de133e25a3ae6d89ff1632b0bb19de",
+    "rol": "estudiante",
+    "nombre": "victor rodirguez",
+    "estudiante_id": "EST-0001"
+  },
+  {
+    "id": "USR-0003",
+    "nombre_usuario": "albertx",
+    "sal": "e65bc59ad05008d48a307a9b0ce2d817",
+    "clave_hash": "f7bbcbf03cfcab441e9c57c7f2a6ed18cad10b603cadd4fef9fe85557f6016cf",
+    "rol": "estudiante",
+    "nombre": "alberto monterrosa",
+    "estudiante_id": "EST-0002"
+  }
+]
